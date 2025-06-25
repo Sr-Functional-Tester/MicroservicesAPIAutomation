@@ -1,0 +1,53 @@
+base_path: /employee
+server_port: 8002
+db_driver: org.h2.Driver
+db_url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
+db_user: sa
+db_password: 
+
+get_endpoint: /getEmployee
+get_endpoint_query: >
+ SELECT id,name,department 
+ FROM employee WHERE id=?
+get_endpoint_logic: invokeGetMethod
+
+
+get_all_endpoint: /getAllEmployee
+get_all_endpoint_query: > 
+ SELECT id,name,department 
+ FROM employee
+get_all_endpoint_logic: invokeGetAllMethod
+
+post_endpoint: /insertEmployee
+post_endpoint_query: >
+ INSERT INTO employee (id, name, department) 
+ VALUES (?, ?, ?)
+post_endpoint_logic: invokePostMethod
+ 
+put_endpoint: /updateEmployee
+put_endpoint_query: >
+ UPDATE employee 
+ SET name=?, department=? 
+ WHERE id=?
+put_endpoint_logic: invokePutMethod
+  
+patch_endpoint: /patchEmployee
+patch_endpoint_query: >
+ UPDATE employee 
+ SET name=?
+ WHERE id=?
+patch_endpoint_logic: invokePatchMethod
+ 
+delete_endpoint: /deleteEmployee
+delete_endpoint_query: >
+ DELETE FROM employee 
+ WHERE id=?
+delete_endpoint_logic: invokeDeleteMethod
+ 
+## Its all about SQLs how you can form them , lets take banking application, give me list of SQLs that represent simple banking application
+## like getUser, updateUser, insertUser then insertTransaction, updateTransaction, Fundtransfer. Getting SQLs for this application is important 
+## then we need to form SQLs in sequence order so that APIGeneration will create jar in such manner.
+
+## Forget about how logic implemented using spring boot java logic , underlining thing is that how we can achieve same application  using only SQLs, use chatgpt
+## get some info about every application. check random applications and their only SQLs to achieve it with minimal logic implementation.
+
