@@ -15,5 +15,14 @@
 // nothing is required apart from yml file to deploy a new service
 // every yml file is a new service here
 
+// You can use Logic.java file if you want to implement some logic eg. 
+//calling third party services from your services or some logic implementation
+// if you want to keep only straight-forward SQLs, then only yml file enough. simply create yml file and then deploy it using API generator like below
+
+java -jar APIGeneratorAxe.jar employee-service.yml
+
+//if you implement Logic, then do deploy like below
+
 //liveuser@localhost-live:/mnt/sdb4/apigeneration$ javac Logic.java
+
 //liveuser@localhost-live:/mnt/sdb4/apigeneration$ java -cp .:APIGeneratorAxe.jar APIAutomationv3 employee-service.yml Logic 
